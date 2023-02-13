@@ -1,6 +1,6 @@
 # *MyDiscussionForum*
 
-## A Social Media Platform
+## A Social Media Platform by Gabriel Mercier and Bhavya Bhagchandani
 
 ***MyDiscussionForum*** has the best solution for safe and secure discussion on a social media platform.
 
