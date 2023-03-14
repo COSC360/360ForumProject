@@ -12,9 +12,9 @@ document.getElementById("myForm").onsubmit = function (e) {
         }
     
         if (fields[i].type=="email"){
-            if (!fields[i].checked) {
+            if (!fields[i].innerHTML) {
                 fields[i].parentElement.classList.add("highlight");
-                alert("Please accept the license!");
+                alert("Please enter email!");
             } 
         }
     }

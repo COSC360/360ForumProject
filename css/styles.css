@@ -1,3 +1,124 @@
 .highlight {
     background-color: red;
 }
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+  
+header {
+    background-color: #3bcd89;
+    color: white;
+    padding: 1.2em;
+    text-align: center;
+}
+  
+nav {
+    background-color: #000;
+    padding: 0.6em;
+}
+  
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: azure;
+    text-decoration: none;
+    padding: 1em;
+}
+
+nav ul li a:hover{
+    color: yellow;
+    text-decoration: none;
+    padding: 1em;
+}
+
+main {
+    margin: 1.2em;
+}
+  
+section {
+    border: 1px solid white;
+    margin-bottom: 1.2em;
+}
+
+h2 {
+    background-color: #428a4e;
+    padding: 0.6em;
+}
+
+li {
+    border-bottom: 0.1em solid white;
+}
+  
+main li:last-child {
+    border-bottom: none;
+}
+  
+article {
+    padding: 0.6em;
+}
+  
+p {
+    margin: 0;
+}
+  
+footer {
+    background-color: #000;
+    color: white;
+    padding: 0.6em;
+    text-align: center;
+}
+
+input {
+    width: 75%;
+    padding: 0.8em;
+    margin: 0.3em 0 1.2em 0;
+    display: inline-block;
+    border: none;
+    background: #9e9c9c;
+}
+  
+  /* Set a style for the submit button */
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 1.2em;
+    margin: 0.4em 0;
+}
+  
+.btn:hover {
+    opacity: .8
+}
+form {
+    background-color: tan;
+    align-content: center;
+    margin: 0em 4em;
+}
+textarea {
+    width: 75%;
+    padding: 0.6em;
+    border: 0.1em solid #ccc;
+    border-radius: 5px;
+}
+
+#create {
+    background-color: greenyellow;
+    padding: 0.1em;
+    border-radius: 0.5em;
+    font-size: 2em;
+}
+
+#create a {
+    color: REd;
+    text-decoration: none;
+    border-bottom: dotted;
+}
