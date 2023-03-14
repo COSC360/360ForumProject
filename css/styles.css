@@ -59,7 +59,7 @@ li {
     border-bottom: 0.1em solid white;
 }
   
-main li:last-child {
+li:last-child {
     border-bottom: none;
 }
   
