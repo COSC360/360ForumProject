@@ -17,8 +17,11 @@ if(isset($_POST['login']))
 {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql ="SELECT * FROM User WHERE email='$email' && password='$password'";
-    $result = mysqli_query($conn,$sql);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND password=?");
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if (mysqli_num_rows($result) > 0){
         $_SESSION['email'] = $email;
         header('location:profile.php');
