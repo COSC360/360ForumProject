@@ -1,22 +1,56 @@
-document.getElementById("myForm").onsubmit = function (e) {
-    const fields = document.getElementsByTagName("input");
-    for (let i = 0; i < fields.length; i++) {
-        fields[i].addEventListener('change', (event) => {
-            fields[i].classList.remove("highlight");
-        });
 
-        if (fields[i].value == null || fields[i].value == "") {
-            e.preventDefault();
-            fields[i].classList.add("highlight");
-            alert("Form is incomplete!");
-        }
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
     
-        if (fields[i].type=="email"){
-            if (!fields[i].innerHTML) {
-                fields[i].parentElement.classList.add("highlight");
-                alert("Please enter email!");
-            } 
+
+
+    document.querySelector("#myForm").addEventListener("submit", function(e){
+        const reqField = document.querySelectorAll("input");
+        for (let i=0;i<reqField.length; i++){
+            if(reqField[i].value==null || reqField[i].value==""){
+                e.preventDefault();
+                
+                reqField[i].classList.add("highlight");
+            }else {
+                reqField[i].classList.remove("highlight");
+            }
+            if(reqField[i].type=="checkbox"){
+                if(!reqField[i].checked){
+                    e.preventDefault();
+                    reqField[i].classList.add("highlight");
+                }
+            }
+
+
         }
-    }
-}
+        
+    });
+
+    document.querySelector("#myForm").addEventListener("input", function(e){
+        const reqField = document.querySelectorAll("input");
+        for (let i=0;i<reqField.length; i++){
+            if(reqField[i].value!=null && reqField[i].value!=""){
+                reqField[i].classList.remove("highlight");
+            }
+            if(reqField[i].type=="checkbox"){
+                if(reqField[i].checked){
+                    reqField[i].classList.remove("highlight");
+                }
+            }
+        }
+        
+    });
+
+
+
+
+});
+
+
+
+
+
+
+
 
