@@ -1,5 +1,8 @@
 
 <?php
+	error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
 session_start();
 
 
@@ -10,15 +13,15 @@ if (!isset($_SESSION['username'])) {
 
 
 
-	$host = "localhost";
-    $database = "lab9";
-    $user = "webuser";
-    $password = "P@ssw0rd";
+	// $host = "localhost";
+    // $database = "lab9";
+    // $user = "webuser";
+    // $password = "P@ssw0rd";
 
-    // $host = "cosc360.ok.ubc.ca";
-    // $database = "db_48255368";
-    // $user = "48255368";
-    // $password = "48255368";
+    $host = "localhost";
+    $database = "db_48255368";
+    $user = "48255368";
+    $password = "48255368";
 
     $connection = mysqli_connect($host, $user, $password, $database);
 

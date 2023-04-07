@@ -1,5 +1,8 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postID = $_POST['postID'];
@@ -7,15 +10,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
  
 
-	$host = "localhost";
-    $database = "lab9";
-    $user = "webuser";
-    $password = "P@ssw0rd";
+	// $host = "localhost";
+    // $database = "lab9";
+    // $user = "webuser";
+    // $password = "P@ssw0rd";
 
-    // $host = "cosc360.ok.ubc.ca";
-    // $database = "db_48255368";
-    // $user = "48255368";
-    // $password = "48255368";
+    $host = "localhost";
+    $database = "db_48255368";
+    $user = "48255368";
+    $password = "48255368";
 
     $connection = mysqli_connect($host, $user, $password, $database);
 
@@ -109,14 +112,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $postID = $_POST['postID'];
 
-                echo '<form action="processcomment.php" method="post" id="mainForm">';
-				echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
-                echo "Add a Comment: <br>";
-                echo '<textarea id="comment" name="comment" rows="5" cols="46" placeholder="Enter a comment..."></textarea>';
-				echo "<br><br>";
-				echo '<input type="submit" id="commented">';
-				echo "</form>";
-            }
+
+                if (isset($_SESSION['username'])) {
+					
+				  
+
+                    echo '<form action="processcomment.php" method="post" id="mainForm">';
+                    echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
+                    echo "Add a Comment: <br>";
+                    echo '<textarea id="comment" name="comment" rows="5" cols="46" placeholder="Enter a comment..."></textarea>';
+                    echo "<br><br>";
+                    echo '<input type="submit" id="commented">';
+                    echo "</form>";
+                    }else {
+                        echo '<p style="color: red;">YOU MUST LOGIN TO ADD A COMMENT</p>';
+                    }
+                }
 			?>
         </div>
 	  </main>
