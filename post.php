@@ -1,19 +1,4 @@
 
-<?php
-session_start();
-
-
-if (isset($_SESSION['username'])) {
-  header("Location: home_loggedin.php");
-  exit;
-}
-
-
- else {
-
-  echo '
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +7,17 @@ if (isset($_SESSION['username'])) {
 </head>
 <body>
 	<header>
-		<a href = "home_loggedout.php">
+		<a href = "home_loggedin.php">
 		<img src="logo.png" alt="Frog Icon" width="50" height="50">
 		</a>
 		<h1>Ribbit</h1>
 		<nav>
 			
 			
-		<form action="search.php" method="post" id="search">
-		<input type="text" placeholder="Search..." name="search" id="search">
-		<button type="submit">Search</button>
-	  </form>
+					<form action="search.php" method="post" id="search">
+					  <input type="text" placeholder="Search..." name="search" id="search">
+					  <button type="submit">Search</button>
+					</form>
 			
 		</nav>
 		<div class="user-buttons">
@@ -45,15 +30,14 @@ if (isset($_SESSION['username'])) {
 		</div>
 	</header>
 	<main>
-		<form method="post" action="processlogin.php" id="mainForm" >
-			Username:<br>
-			<input type="text" name="username" id="username" class="required">
+		<form method="post" action="processpost.php" id="mainForm" >
+			Title: <br>
+			<textarea id="title" name="title" rows="5" cols="46" placeholder="Enter a title..."></textarea>
 			<br>
-			Password:<br>
-			<input type="password" name="password" id="password" class="required">
-			<br>
+			Content:<br>
+			<textarea id="content" name="content" rows="10" cols="46" placeholder="Enter your content..."></textarea>
 			<br><br>
-			<input type="submit" value="Login">
+			<input type="submit" id="posted">
 		  </form>
 	</main>
 	<footer>
@@ -62,5 +46,4 @@ if (isset($_SESSION['username'])) {
 </body>
 </html>
 
-  ';
-}
+

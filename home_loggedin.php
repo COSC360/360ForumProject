@@ -1,9 +1,12 @@
 
 <?php
+session_start();
 
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+} else {
 
 
 
@@ -25,16 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 	
-    $keyword = $_POST['search'];
+
 	$query = "SELECT userimages.contentType, userimages.image, posts.* FROM users
 	LEFT JOIN userimages ON users.userID = userimages.userID
 	JOIN posts ON users.userID = posts.userID
-    WHERE posts.Content LIKE '%$keyword%' OR posts.title LIKE '%$keyword%'
 	ORDER BY posts.postID DESC";
     $result = mysqli_query($connection, $query);
+    
 
-
-
+	
+	
     $connection->close();
 }
 
@@ -51,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </head>
   <body>
 	  <header>
-		  <a href = "home_loggedin.php">
+		  <a href = "#top">
 		  <img src="logo.png" alt="Frog Icon" width="50" height="50">
 		  </a>
 		  <h1>Ribbit</h1> 
@@ -64,10 +67,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					</form>
 			  
 		  </nav>
-		  
+		  <div class="user-buttons">
+			  <button onclick="playSong()">gofroggygo</button>
+			  <audio id="song" src="song.mp3"></audio>
+			  <script>
+				  function playSong() {
+					  var song = document.getElementById("song");
+					  song.play();
+				  }
+	  			</script>
+			  <form action="logout.php" method="post" id="userbuttons">
+				  <button type="submit" id="submitlogout">logout</button>
+			  </form>
+		  </div>
 	  </header>
 	  <main>
-		 
+		  <form action="post.php" method="post" id="createpost">
+			  <button type="submit" id="submitcreate">Create Post</button>
+		  </form>
 		  <div class="post">
 		  <?php 
 		  if (mysqli_num_rows($result) > 0) {
@@ -76,29 +93,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$title = $row['title'];
 				$content = $row['Content'];
 				$username = $row['username'];
+				$postID = $row['postID'];
 
        			$profilePic = base64_encode($row['image']); 
         		$imageType = $row['contentType'];
        			$imageSrc = "data:image/$imageType;base64,$profilePic";
 	
 
-			
-                   echo '<form action="comment.php" method="post" id="comment">';
-                   echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
-                   echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
-                   echo "<input type='hidden' name='username' id='username' value='$username'>";
-                   echo "<p class = 'title'>$title</p>";
-                   echo "<input type='hidden' name='title' id='title' value='$title'>";
-                   echo "<p>$content</p>";
-                   echo "<input type='hidden' name='content' id='content' value='$content'>";
-                   
-                   echo '<button type="submit" id="submitcommment">Comments</button>';
-                   echo "</form>";
-                   echo "<hr>";
+				echo '<form action="comment.php" method="post" id="comment">';
+				echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
+				echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
+				echo "<input type='hidden' name='username' id='username' value='$username'>";
+				echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
+				echo "<p class = 'title'>$title</p>";
+				echo "<input type='hidden' name='title' id='title' value='$title'>";
+				echo "<p>$content</p>";
+				echo "<input type='hidden' name='content' id='content' value='$content'>";
+				
+				echo '<button type="submit" id="submitcommment">Comments</button>';
+				echo "</form>";
+				echo "<hr>";
 			}
 
 		} else {
-			echo "No posts match your search :(";
+			echo "No posts yet :(";
 		}
 			?>
 		  </div>
@@ -108,3 +126,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  </footer>
   </body>
   </html>
+
+ 
+
+
+
+
+

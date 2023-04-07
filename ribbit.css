@@ -1,0 +1,156 @@
+* {
+    font-family: "Cooper Black", sans-serif;
+    
+  }
+
+body {
+    background-color: #36393F;
+    color: #DCDDDE;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #7289da;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+header h1 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    margin: 0;
+    text-align: center; 
+}
+
+header nav a {
+    color: #DCDDDE;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+form input{
+    border-radius: 0.25rem;
+}
+
+
+header form input[type="text"] {
+    border: none;
+    background-color: #202225;
+    color: #DCDDDE;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+header form button[type="submit"] {
+    background-color: #7289da;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+header img {
+    margin-right: 0.5rem;
+}
+
+.user-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.user-buttons form button[type="submit"] {
+    background-color: #7289da;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 20px;
+}
+
+
+main {
+    padding: 2rem;
+    text-align: center;
+    padding-top: 100px;
+
+}
+
+.post {
+    text-align: left;
+}
+
+.post h2 {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: #FFFFFF;
+}
+
+.post p:first-of-type {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.post p {
+    margin-top: 0;
+}
+
+.post form button[type="submit"] {
+    background-color: #7289da;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #7289da;
+    margin: 2rem 0;
+}
+
+.profile {
+    border-radius: 50%;
+}
+
+
+
+
+
+/* Footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    width: 100%;
+    background-color: #202225;
+    color: #DCDDDE;
+    text-align: center;
+    padding: 1rem;
+    }
