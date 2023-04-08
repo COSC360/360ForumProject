@@ -10,30 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
  
 
-	// $host = "localhost";
-    // $database = "lab9";
-    // $user = "webuser";
-    // $password = "P@ssw0rd";
+require "dbConnect.php";
 
-    $host = "localhost";
-    $database = "db_48255368";
-    $user = "48255368";
-    $password = "48255368";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    if ($connection->connect_error) {
-      die("oh no connection failed :(" . $connection->connect_error);
-    }
-
-
-	
-
-	$query = "SELECT posts.username, comments.content, comments.usern FROM comments
-	LEFT JOIN posts ON comments.postID = posts.postID
-    WHERE comments.postID = $postID
-	ORDER BY comments.postID DESC";
-    $result = mysqli_query($connection, $query);
+$query = "SELECT posts.username, comments.content, comments.usern FROM comments
+LEFT JOIN posts ON comments.postID = posts.postID
+WHERE comments.postID = $postID
+ORDER BY comments.postID DESC";
+$result = mysqli_query($connection, $query);
     
 
 	
@@ -58,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  <nav>
 			  
 			  
-				  <form action="search.php" method="post" id="search">
+				  <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
@@ -131,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
 			?>
         </div>
+        <a href="javascript:history.back()">Go Back</a>
 	  </main>
 	  <footer>
 		  <p>&copy; 2023 Ribbit. All rights reserved.</p>

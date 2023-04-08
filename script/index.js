@@ -1,56 +1,53 @@
+  //check passwords
 
-
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    
-
-
-    document.querySelector("#myForm").addEventListener("submit", function(e){
-        const reqField = document.querySelectorAll("input");
-        for (let i=0;i<reqField.length; i++){
-            if(reqField[i].value==null || reqField[i].value==""){
-                e.preventDefault();
-                
-                reqField[i].classList.add("highlight");
-            }else {
-                reqField[i].classList.remove("highlight");
-            }
-            if(reqField[i].type=="checkbox"){
-                if(!reqField[i].checked){
-                    e.preventDefault();
-                    reqField[i].classList.add("highlight");
-                }
-            }
-
-
+  function isBlank(inputField)
+  {
+      if (inputField.value=="")
+      {
+           return true;
+      }
+      return false;
+  }
+  
+  function makeRed(inputDiv){
+      inputDiv.style.borderColor="#AA0000";
+  }
+  
+  function makeClean(inputDiv){
+      inputDiv.style.borderColor="#FFFFFF";
+  }
+  
+  window.onload = function()
+  {
+      var mainForm = document.getElementByClass("mainForm");
+      var requiredInputs = document.querySelectorAll(".required");
+  
+      mainForm.onsubmit = function(e)
+      {
+           var requiredInputs = document.querySelectorAll(".required");
+         var err = false;
+  
+           for (var i=0; i < requiredInputs.length; i++)
+         {
+              if( isBlank(requiredInputs[i]))
+            {
+                    err |= true;
+                    makeRed(requiredInputs[i]);
+              }
+              else
+            {
+                    makeClean(requiredInputs[i]);
+              }
+          }
+        if (err == true)
+        {
+          e.preventDefault();
         }
-        
-    });
-
-    document.querySelector("#myForm").addEventListener("input", function(e){
-        const reqField = document.querySelectorAll("input");
-        for (let i=0;i<reqField.length; i++){
-            if(reqField[i].value!=null && reqField[i].value!=""){
-                reqField[i].classList.remove("highlight");
-            }
-            if(reqField[i].type=="checkbox"){
-                if(reqField[i].checked){
-                    reqField[i].classList.remove("highlight");
-                }
-            }
+        else
+        {
+          console.log('checking match');
+          checkPasswordMatch(e);
         }
-        
-    });
-
-
-
-
-});
-
-
-
-
-
-
-
-
+      }
+  }
+  

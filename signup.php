@@ -20,6 +20,23 @@ if (isset($_SESSION['username'])) {
   <head>
     <title>Ribbit</title>
     <link rel="stylesheet" href="ribbit.css" />
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script>
+      function checkPasswordMatch(e) {
+        var password = document.getElementById('password');
+        var cPassword = document.getElementById('password-check');
+
+        if (password.value != cPassword.value) {
+          e.preventDefault();
+          makeRed(password);
+          makeRed(cPassword);
+          alert("Passwords do not match! Please try again!");
+          return false
+        }
+        return true;
+        
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -30,23 +47,23 @@ if (isset($_SESSION['username'])) {
       <nav>
         
         
-      <form action="search.php" method="post" id="search">
+      <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
         
       </nav>
       <div class="user-buttons">
-        <form action="login.php" method="post" id="userbuttons">
+        <form action="login.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitlogin">login</button>
 			  </form>
-			  <form action="signup.php" method="post" id="userbuttons">
+			  <form action="signup.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitsignup">signup</button>
 			  </form>
       </div>
     </header>
     <main>
-      <form method="post" action="newuser.php" id="mainForm" enctype="multipart/form-data">
+      <form method="post" action="newuser.php" id="mainForm" enctype="multipart/form-data" class="mainForm">
         First Name:<br>
         <input type="text" name="firstname" id="firstname" class="required">
         <br>
@@ -70,6 +87,7 @@ if (isset($_SESSION['username'])) {
         <br><br>
         <input type="submit" value="Create New User">
         </form>
+        <a href="javascript:history.back()">Go Back</a>
     </main>
     <footer>
       <p>&copy; 2023 Ribbit. All rights reserved.</p>

@@ -8,21 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-	// $host = "localhost";
-    // $database = "lab9";
-    // $user = "webuser";
-    // $password = "P@ssw0rd";
-
-    $host = "localhost";
-    $database = "db_48255368";
-    $user = "48255368";
-    $password = "48255368";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    if ($connection->connect_error) {
-      die("oh no connection failed :(" . $connection->connect_error);
-    }
+	require "dbConnect.php";
 
 
 	
@@ -59,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  <nav>
 			  
 			  
-				  <form action="search.php" method="post" id="search">
+				  <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
@@ -84,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 
 			
-                   echo '<form action="comment.php" method="post" id="comment">';
+                   echo '<form action="comment.php" method="post" id="comment" class="mainForm">';
                    echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
                    echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
                    echo "<input type='hidden' name='username' id='username' value='$username'>";
@@ -103,6 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 			?>
 		  </div>
+		  <a href="javascript:history.back()">Go Back</a>
 	  </main>
 	  <footer>
 		  <p>&copy; 2023 Ribbit. All rights reserved.</p>
