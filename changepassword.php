@@ -14,7 +14,6 @@ if (!isset($_SESSION['username'])) {
 
 	require "dbConnect.php";
 
-
 	$username = $_SESSION['username'];
     
     $query2 = "SELECT userimages.contentType, userimages.image, users.* FROM userimages
@@ -76,14 +75,15 @@ if (!isset($_SESSION['username'])) {
 		</div>
 	</header>
 	<main>
-		<form method="post" action="processpost.php" id="mainForm" >
-			Title: <br>
-			<textarea id="title" name="title" rows="5" cols="46" placeholder="Enter a title..."></textarea>
+    <form method="post" action="processpassword.php" id="mainForm" >
+			Old Password:<br>
+			<input type="password" name="oldpassword" id="oldpassword" class="required">
 			<br>
-			Content:<br>
-			<textarea id="content" name="content" rows="10" cols="46" placeholder="Enter your content..."></textarea>
+			New Password:<br>
+			<input type="password" name="newpassword" id="newpassword" class="required">
+			<br>
 			<br><br>
-			<input type="submit" id="posted">
+			<button type="submit" id="changepassword">Change Password</button>
 		  </form>
 	</main>
 	<footer >

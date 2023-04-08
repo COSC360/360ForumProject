@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -10,6 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	require "dbConnect.php";
 
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+    
+		$query2 = "SELECT userimages.contentType, userimages.image, users.* FROM userimages
+		LEFT JOIN users ON userimages.userID = users.userID 
+		WHERE users.username = '$username'";
+		$result2 = mysqli_query($connection, $query2);
+	}
 
 	
     $keyword = $_POST['search'];
@@ -45,13 +54,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  <nav>
 			  
 			  
-				  <form action="search.php" method="post" id="search" class="mainForm">
+				  <form action="search.php" method="post" id="search">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
 			  
 		  </nav>
+		  <?php 
+		  if (isset($_SESSION['username'])) {
+		  echo '<div class="user-buttons">';
+			echo '<a href = "profile.php">';
 		  
+		  if (mysqli_num_rows($result2) > 0) {
+		
+			while ($row2 = mysqli_fetch_assoc($result2)) {
+
+
+       			$profilePic = base64_encode($row2['image']); 
+        		$imageType = $row2['contentType'];
+       			$imageSrc = "data:image/$imageType;base64,$profilePic";
+	
+
+				echo "<img src='$imageSrc' alt='bigboy' width='40' height='40' class = 'profile' style ='overflow: hidden; object-fit: cover; object-position: center center;'>";
+
+			}
+
+		} else {
+			echo "No user found :(";
+		}
+	}
+			?>
+		  </a>
+		  <form action="logout.php" method="post" id="userbuttons">
+				  <button type="submit" id="submitlogout">logout</button>
+			  </form>
+		</div>
 	  </header>
 	  <main>
 		 
@@ -70,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 
 			
-                   echo '<form action="comment.php" method="post" id="comment" class="mainForm">';
+                   echo '<form action="comment.php" method="post" id="comment">';
                    echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
                    echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
                    echo "<input type='hidden' name='username' id='username' value='$username'>";
@@ -89,7 +126,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 			?>
 		  </div>
-		  <a href="javascript:history.back()">Go Back</a>
 	  </main>
 	  <footer>
 		  <p>&copy; 2023 Ribbit. All rights reserved.</p>

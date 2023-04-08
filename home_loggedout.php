@@ -37,22 +37,22 @@
 		<nav>
 			
 			
-					<form action="search.php" method="post" id="search" class="mainForm">
+					<form action="search.php" method="post" id="search">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
 			
 		</nav>
 		<div class="user-buttons">
-			<form action="login.php" method="post" id="userbuttons" class="mainForm">
+			<form action="login.php" method="post" id="userbuttons">
 				<button type="submit" id="submitlogin">login</button>
 			</form>
-			<form action="signup.php" method="post" id="userbuttons" class="mainForm">
+			<form action="signup.php" method="post" id="userbuttons">
 				<button type="submit" id="submitsignup">signup</button>
 			</form>
 		</div>
 	</header>
-	<main>
+	<main style = "padding-bottom: 100px;">
 		<p style="color: red;">YOU MUST LOGIN TO CREATE A POST</p>
 		<div class="post">
 		<?php 
@@ -69,7 +69,7 @@
        			$imageSrc = "data:image/$imageType;base64,$profilePic";
 	
 
-				echo '<form action="comment.php" method="post" id="comment" class="mainForm">';
+				echo '<form action="comment.php" method="post" id="comment">';
 				echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
 				echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
 				echo "<input type='hidden' name='username' id='username' value='$username'>";
@@ -89,7 +89,6 @@
 		}
 			?>
 		</div>
-		<a href="javascript:history.back()">Go Back</a>
 	</main>
 	<footer>
 		<p>&copy; 2023 Ribbit. All rights reserved.</p>
