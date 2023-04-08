@@ -8,43 +8,17 @@ if (!isset($_SESSION['username'])) {
     exit;
 } else {
 
-
-
-	$host = "localhost";
-    $database = "lab9";
-    $user = "webuser";
-    $password = "P@ssw0rd";
-
-    // $host = "cosc360.ok.ubc.ca";
-    // $database = "db_48255368";
-    // $user = "48255368";
-    // $password = "48255368";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    if ($connection->connect_error) {
-      die("oh no connection failed :(" . $connection->connect_error);
-    }
-
-
-	
+	require "dbConnect.php";
 
 	$query = "SELECT userimages.contentType, userimages.image, posts.* FROM users
 	LEFT JOIN userimages ON users.userID = userimages.userID
 	JOIN posts ON users.userID = posts.userID
-	ORDER BY posts.postID DESC";
+	ORDER BY posts.userID DESC";
     $result = mysqli_query($connection, $query);
-    
 
-	
-	
     $connection->close();
 }
-
 	?>
-
-
-
 
 <!DOCTYPE html>
   <html>

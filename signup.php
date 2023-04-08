@@ -17,6 +17,23 @@ if (isset($_SESSION['username'])) {
   <head>
     <title>Ribbit</title>
     <link rel="stylesheet" href="ribbit.css" />
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script>
+      function checkPasswordMatch(e) {
+        var password = document.getElementById('password');
+        var cPassword = document.getElementById('password-check');
+
+        if (password.value != cPassword.value) {
+          e.preventDefault();
+          makeRed(password);
+          makeRed(cPassword);
+          alert("Passwords do not match! Please try again!");
+          return false
+        }
+        return true;
+        
+      }
+    </script>
   </head>
   <body>
     <header>
