@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	LEFT JOIN userimages ON users.userID = userimages.userID
 	JOIN posts ON users.userID = posts.userID
     WHERE posts.Content LIKE '%$keyword%' OR posts.title LIKE '%$keyword%'
-	ORDER BY posts.postID DESC";
+	ORDER BY posts.userID DESC";
     $result = mysqli_query($connection, $query);
 
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			while ($row = mysqli_fetch_assoc($result)) {
 				$title = $row['title'];
 				$content = $row['Content'];
-				$username = $row['username'];
+				$username = $row['userID'];
 
        			$profilePic = base64_encode($row['image']); 
         		$imageType = $row['contentType'];

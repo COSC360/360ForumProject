@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_assoc($result);
     $userID = $row['userID'];
 
-    $sql = "INSERT INTO posts (userID, title, Content) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO posts (userID, title, Content, username) VALUES (?, ?, ?, ?)";
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("iss", $userID, $title, $content);
+    $stmt->bind_param("iss", $userID, $title, $content, $username);
 
     if ($stmt->execute()) {
         header("Location: home_loggedin.php");

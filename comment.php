@@ -12,8 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 require "dbConnect.php";
 
-	$query = "SELECT posts.username, comments.content FROM comments
-	LEFT JOIN posts ON comments.postID = posts.postID
+	$query = "SELECT posts.userID, comments.content FROM comments
+	LEFT JOIN posts ON comments.postID = posts.userID
     WHERE comments.postID = $postID
 	ORDER BY comments.postID DESC";
     $result = mysqli_query($connection, $query);
@@ -74,7 +74,7 @@ require "dbConnect.php";
 		
 			while ($row = mysqli_fetch_assoc($result)) {
 				$content = $row['content'];
-				$usernamer = $row['username'];
+				$usernamer = $row['userID'];
 
        			
 	

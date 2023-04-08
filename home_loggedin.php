@@ -13,10 +13,10 @@ if (!isset($_SESSION['username'])) {
 
 	require "dbConnect.php";
 
-	$query = "SELECT username, userimages.contentType, userimages.image, posts.* FROM users
+	$query = "SELECT userimages.contentType, userimages.image, posts.* FROM users
 	LEFT JOIN userimages ON users.userID = userimages.userID
 	JOIN posts ON users.userID = posts.userID
-	ORDER BY posts.userID DESC";
+	ORDER BY posts.postID DESC";
     $result = mysqli_query($connection, $query);
 
     $connection->close();
@@ -70,7 +70,7 @@ if (!isset($_SESSION['username'])) {
 				$title = $row['title'];
 				$content = $row['Content'];
 				$username = $row['username'];
-				$postID = $row['userID'];
+				$postID = $row['postID'];
 
        			$profilePic = base64_encode($row['image']); 
         		$imageType = $row['contentType'];
