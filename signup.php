@@ -47,23 +47,23 @@ if (isset($_SESSION['username'])) {
       <nav>
         
         
-      <form action="search.php" method="post" id="search">
+      <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
         
       </nav>
       <div class="user-buttons">
-        <form action="login.php" method="post" id="userbuttons">
+        <form action="login.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitlogin">login</button>
 			  </form>
-			  <form action="signup.php" method="post" id="userbuttons">
+			  <form action="signup.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitsignup">signup</button>
 			  </form>
       </div>
     </header>
     <main>
-      <form method="post" action="newuser.php" id="mainForm" enctype="multipart/form-data">
+      <form method="post" action="newuser.php" id="mainForm" enctype="multipart/form-data" class="mainForm">
         First Name:<br>
         <input type="text" name="firstname" id="firstname" class="required">
         <br>

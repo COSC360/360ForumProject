@@ -14,7 +14,7 @@
 		<nav>
 			
 			
-					<form action="search.php" method="post" id="search">
+					<form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
@@ -30,7 +30,7 @@
 		</div>
 	</header>
 	<main>
-		<form method="post" action="processpost.php" id="mainForm" >
+		<form method="post" action="processpost.php" id="mainForm" class="mainForm">
 			Title: <br>
 			<textarea id="title" name="title" rows="5" cols="46" placeholder="Enter a title..."></textarea>
 			<br>

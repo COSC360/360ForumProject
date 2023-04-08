@@ -12,9 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 require "dbConnect.php";
 
-
-	
-
 	$query = "SELECT posts.username, comments.content FROM comments
 	LEFT JOIN posts ON comments.postID = posts.postID
     WHERE comments.postID = $postID
@@ -44,7 +41,7 @@ require "dbConnect.php";
 		  <nav>
 			  
 			  
-				  <form action="search.php" method="post" id="search">
+				  <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
@@ -103,7 +100,7 @@ require "dbConnect.php";
 					
 				  
 
-                    echo '<form action="processcomment.php" method="post" id="mainForm">';
+                    echo '<form action="processcomment.php" method="post" id="mainForm" class="mainForm">';
                     echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
                     echo "Add a Comment: <br>";
                     echo '<textarea id="comment" name="comment" rows="5" cols="46" placeholder="Enter a comment..."></textarea>';

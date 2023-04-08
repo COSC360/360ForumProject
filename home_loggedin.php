@@ -38,7 +38,7 @@ if (!isset($_SESSION['username'])) {
 		  <nav>
 			  
 			  
-				  <form action="search.php" method="post" id="search">
+				  <form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
@@ -53,13 +53,13 @@ if (!isset($_SESSION['username'])) {
 					  song.play();
 				  }
 	  			</script>
-			  <form action="logout.php" method="post" id="userbuttons">
+			  <form action="logout.php" method="post" id="userbuttons" class="mainForm">
 				  <button type="submit" id="submitlogout">logout</button>
 			  </form>
 		  </div>
 	  </header>
 	  <main>
-		  <form action="post.php" method="post" id="createpost">
+		  <form action="post.php" method="post" id="createpost" class="mainForm">
 			  <button type="submit" id="submitcreate">Create Post</button>
 		  </form>
 		  <div class="post">
@@ -77,7 +77,7 @@ if (!isset($_SESSION['username'])) {
        			$imageSrc = "data:image/$imageType;base64,$profilePic";
 	
 
-				echo '<form action="comment.php" method="post" id="comment">';
+				echo '<form action="comment.php" method="post" id="comment" class="mainForm">';
 				echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
 				echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
 				echo "<input type='hidden' name='username' id='username' value='$username'>";

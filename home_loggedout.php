@@ -37,17 +37,17 @@
 		<nav>
 			
 			
-					<form action="search.php" method="post" id="search">
+					<form action="search.php" method="post" id="search" class="mainForm">
 					  <input type="text" placeholder="Search..." name="search" id="search">
 					  <button type="submit">Search</button>
 					</form>
 			
 		</nav>
 		<div class="user-buttons">
-			<form action="login.php" method="post" id="userbuttons">
+			<form action="login.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitlogin">login</button>
 			</form>
-			<form action="signup.php" method="post" id="userbuttons">
+			<form action="signup.php" method="post" id="userbuttons" class="mainForm">
 				<button type="submit" id="submitsignup">signup</button>
 			</form>
 		</div>
@@ -69,7 +69,7 @@
        			$imageSrc = "data:image/$imageType;base64,$profilePic";
 	
 
-				echo '<form action="comment.php" method="post" id="comment">';
+				echo '<form action="comment.php" method="post" id="comment" class="mainForm">';
 				echo "<h2><img src='$imageSrc' alt='bigboy' width='50' height='50' class = 'profile'>@$username</h2><br>";
 				echo "<input type='hidden' name='imageSrc' id='imageSrc' value='$imageSrc'>";
 				echo "<input type='hidden' name='username' id='username' value='$username'>";

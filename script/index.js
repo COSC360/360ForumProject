@@ -19,7 +19,7 @@
   
   window.onload = function()
   {
-      var mainForm = document.getElementById("mainForm");
+      var mainForm = document.getElementByClass("mainForm");
       var requiredInputs = document.querySelectorAll(".required");
   
       mainForm.onsubmit = function(e)
