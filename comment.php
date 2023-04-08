@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	
 
-	$query = "SELECT posts.username, comments.content FROM comments
+	$query = "SELECT posts.username, comments.content, comments.usern FROM comments
 	LEFT JOIN posts ON comments.postID = posts.postID
     WHERE comments.postID = $postID
 	ORDER BY comments.postID DESC";
@@ -90,14 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  if (mysqli_num_rows($result) > 0) {
 		
 			while ($row = mysqli_fetch_assoc($result)) {
-				$content = $row['content'];
-				$usernamer = $row['username'];
+				$contenter = $row['content'];
+				$usern = $row['usern'];
 
        			
 	
                 echo "<br><br>";
-                echo "<p style='font-size: 1rem; color: white;'>@$usernamer</p>";
-                echo "<p style='text-indent: 20px;'>$content</p>";
+                echo "<p style='font-size: 1rem; color: white;'>@$usern</p>";
+                echo "<p style='text-indent: 20px;'>$contenter</p>";
                 echo "<br><br>";
 
 			}
@@ -115,16 +115,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if (isset($_SESSION['username'])) {
 					
-				  
-
-                    echo '<form action="processcomment.php" method="post" id="mainForm">';
-                    echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
-                    echo "Add a Comment: <br>";
-                    echo '<textarea id="comment" name="comment" rows="5" cols="46" placeholder="Enter a comment..."></textarea>';
-                    echo "<br><br>";
-                    echo '<input type="submit" id="commented">';
-                    echo "</form>";
-                    }else {
+                    $usern = $_SESSION['username'];
+  
+                  echo '<form action="processcomment.php" method="post" id="mainForm">';
+                  echo "<input type='hidden' name='postID' id='postID' value='$postID'>";
+                  echo "<input type='hidden' name='usern' id='usern' value='$usern'>";
+                  echo "Add a Comment: <br>";
+                  echo '<textarea id="comment" name="comment" rows="5" cols="46" placeholder="Enter a comment..."></textarea>';
+                  echo "<br><br>";
+                  echo '<input type="submit" id="commented">';
+                  echo "</form>";
+                  }else {
                         echo '<p style="color: red;">YOU MUST LOGIN TO ADD A COMMENT</p>';
                     }
                 }

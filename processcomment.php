@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $content = $_POST["comment"];
   $postID = $_POST["postID"];
+  $usern = $_POST["usern"];
 
   if (empty($content)) {
     header("Location: home_loggedin.php");
@@ -40,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    $sql = "INSERT INTO comments (postID, content) VALUES (?, ?)";
+    $sql = "INSERT INTO comments (postID, content, usern) VALUES (?, ?, ?)";
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("is", $postID, $content);
+    $stmt->bind_param("iss", $postID, $content, $usern);
 
     if ($stmt->execute()) {
         header("Location: home_loggedin.php");
