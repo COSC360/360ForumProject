@@ -3,6 +3,8 @@
 
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 error_reporting(E_ERROR | E_PARSE);
 
 $target_dir = "uploads/";
@@ -74,15 +76,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["firstname"]) && isset(
     }
     
 
-    $host = "localhost";
-    $database = "lab9";
-    $user = "webuser";
-    $password = "P@ssw0rd";
+    // $host = "localhost";
+    // $database = "lab9";
+    // $user = "webuser";
+    // $password = "P@ssw0rd";
 
-    // $host = "cosc360.ok.ubc.ca";
-    // $database = "db_48255368";
-    // $user = "48255368";
-    // $password = "48255368";
+    $host = "localhost";
+    $database = "db_48255368";
+    $user = "48255368";
+    $password = "48255368";
 
     $connection = mysqli_connect($host, $user, $password, $database);
 
@@ -115,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["firstname"]) && isset(
                 echo "The new user's userID is: " . $userID;
                 $imagedata = file_get_contents($_FILES['userImage']['tmp_name']);
                 //store the contents of the files in memory in preparation for upload
-                $sql2 = "INSERT INTO userImages (userID, contentType, image) VALUES(?,?,?)";
+                $sql2 = "INSERT INTO userimages (userID, contentType, image) VALUES(?,?,?)";
                 // create a new statement to insert the image into the table. Recall
                 // that the ? is a placeholder to variable data.
                 $stmt = mysqli_stmt_init($connection); //init prepared statement object
