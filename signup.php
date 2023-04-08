@@ -87,6 +87,7 @@ if (isset($_SESSION['username'])) {
         <br><br>
         <input type="submit" value="Create New User">
         </form>
+        <a href="javascript:history.back()">Go Back</a>
     </main>
     <footer>
       <p>&copy; 2023 Ribbit. All rights reserved.</p>

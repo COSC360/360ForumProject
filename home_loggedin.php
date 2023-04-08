@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 
 	require "dbConnect.php";
 
-	$query = "SELECT userimages.contentType, userimages.image, posts.* FROM users
+	$query = "SELECT username, userimages.contentType, userimages.image, posts.* FROM users
 	LEFT JOIN userimages ON users.userID = userimages.userID
 	JOIN posts ON users.userID = posts.userID
 	ORDER BY posts.userID DESC";
@@ -70,7 +70,7 @@ if (!isset($_SESSION['username'])) {
 				$title = $row['title'];
 				$content = $row['Content'];
 				$username = $row['username'];
-				$postID = $row['postID'];
+				$postID = $row['userID'];
 
        			$profilePic = base64_encode($row['image']); 
         		$imageType = $row['contentType'];
@@ -97,6 +97,7 @@ if (!isset($_SESSION['username'])) {
 		}
 			?>
 		  </div>
+		  <a href="javascript:history.back()">Go Back</a>
 	  </main>
 	  <footer>
 		  <p>&copy; 2023 Ribbit. All rights reserved.</p>

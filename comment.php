@@ -113,6 +113,7 @@ require "dbConnect.php";
                 }
 			?>
         </div>
+        <a href="javascript:history.back()">Go Back</a>
 	  </main>
 	  <footer>
 		  <p>&copy; 2023 Ribbit. All rights reserved.</p>
