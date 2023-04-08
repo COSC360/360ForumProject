@@ -74,23 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["firstname"]) && isset(
         header("Location: signup.php");
         exit;
     }
-    
 
-    // $host = "localhost";
-    // $database = "lab9";
-    // $user = "webuser";
-    // $password = "P@ssw0rd";
-
-    $host = "localhost";
-    $database = "db_48255368";
-    $user = "48255368";
-    $password = "48255368";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    if ($connection->connect_error) {
-        die("oh no connection failed :(".$connection->connect_error);
-    }
+    require "dbConnect.php";
 
     $query = "SELECT * FROM users WHERE username='$username' OR email='$email'";
     $result = $connection->query($query);

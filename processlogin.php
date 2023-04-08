@@ -20,22 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   } else {
 
-    // $host = "localhost";
-    // $database = "lab9";
-    // $user = "webuser";
-    // $password = "P@ssw0rd";
-
-    $host = "localhost";
-    $database = "db_48255368";
-    $user = "48255368";
-    $password = "48255368";
-
-    $connection = mysqli_connect($host, $user, $password, $database);
-
-    if ($connection->connect_error) {
-      die("oh no connection failed :(" . $connection->connect_error);
-    }
-
+    require "dbConnect.php";
     $query = $connection->prepare("SELECT * FROM users WHERE username=? AND password=?");
     $query->bind_param("ss", $username, $passwordd);
     $query->execute();
